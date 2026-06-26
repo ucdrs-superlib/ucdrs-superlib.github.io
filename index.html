@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="canonical" href="https://www.example.com/">
+
+    <!-- TDK -->
+    <title>全国图书馆参考咨询联盟推荐平台 - 免费电子书搜索下载</title>
+    <meta name="description" content="全国图书馆参考咨询联盟旗下免费电子书搜索引擎，提供海量电子书免费下载，支持PDF、EPUB、MOBI等多格式。覆盖文学、历史、科技等全品类电子书，无需注册，直接下载。">
+    <meta name="keywords" content="全国图书馆参考咨询联盟,免费电子书下载,电子书搜索引擎,电子书搜索,免费电子书,PDF电子书下载,EPUB下载,电子图书馆">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="全国图书馆参考咨询联盟推荐平台 - 免费电子书搜索下载">
+    <meta property="og:description" content="全国图书馆参考咨询联盟旗下免费电子书搜索引擎，海量电子书免费下载，支持PDF、EPUB、MOBI等多格式。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/">
+    <meta property="og:site_name" content="全国图书馆参考咨询联盟">
+
+    <!-- JSON-LD 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "全国图书馆参考咨询联盟",
+        "url": "https://www.example.com",
+        "description": "免费电子书搜索下载平台",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.example.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "全国图书馆参考咨询联盟",
+        "url": "https://www.example.com",
+        "description": "免费电子书搜索与下载服务平台"
+    }
+    </script>
+
+    <style>
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            background: #f5f6fa;
+            line-height: 1.6;
+            min-width: 320px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #1557b0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: #1a73e8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .nav {
+            display: flex;
+            gap: 28px;
+        }
+        .nav a {
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav a:hover {
+            color: #1a73e8;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+            padding: 4px;
+        }
+
+        /* ===== Hero / 搜索区 ===== */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8 0%, #4a90d9 100%);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px 50px;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .hero h1 span {
+            color: #ffd54f;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 28px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .search-box {
+            display: flex;
+            max-width: 640px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 14px 24px;
+            font-size: 1rem;
+            color: #333;
+        }
+        .search-box input::placeholder {
+            color: #aaa;
+        }
+        .search-box button {
+            border: none;
+            outline: none;
+            background: #ff6b35;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 14px 32px;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .search-box button:hover {
+            background: #e55a2b;
+        }
+        .search-tags {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            opacity: 0.85;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .search-tags span {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .search-tags span:hover {
+            color: #ffd54f;
+        }
+
+        /* ===== Section 通用 ===== */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 8px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 36px;
+        }
+
+        /* ===== 特色说明 ===== */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.6rem;
+        }
+        .feature-icon.blue { background: #e8f0fe; color: #1a73e8; }
+        .feature-icon.orange { background: #fff3e0; color: #ff6b35; }
+        .feature-icon.green { background: #e8f5e9; color: #43a047; }
+        .feature-icon.purple { background: #f3e5f5; color: #8e24aa; }
+        .feature-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: #222;
+        }
+        .feature-card p {
+            font-size: 0.88rem;
+            color: #777;
+        }
+
+        /* ===== 分类浏览 ===== */
+        .categories {
+            background: #fff;
+        }
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .cat-item {
+            background: #f5f6fa;
+            border-radius: 10px;
+            padding: 20px 16px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .cat-item:hover {
+            background: #1a73e8;
+            color: #fff;
+        }
+        .cat-item .cat-icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* ===== 热门推荐 ===== */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .book-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        .book-cover {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+        }
+        .book-cover.c2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .book-cover.c3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .book-cover.c4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .book-cover.c5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .book-cover.c6 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .book-cover.c7 { background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%); }
+        .book-cover.c8 { background: linear-gradient(135deg, #96fbc4 0%, #f9f586 100%); }
+        .book-format {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            font-size: 0.72rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .book-info {
+            padding: 16px;
+        }
+        .book-info h3 {
+            font-size: 0.95rem;
+            color: #222;
+            margin-bottom: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .book-info .author {
+            font-size: 0.82rem;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        .book-info .btn-download {
+            display: inline-block;
+            background: #1a73e8;
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-download:hover {
+            background: #1557b0;
+            color: #fff;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: #1a73e8;
+            color: #fff;
+            text-align: center;
+            padding: 48px 20px;
+        }
+        .cta h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .cta .btn-cta {
+            display: inline-block;
+            background: #fff;
+            color: #1a73e8;
+            padding: 12px 36px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+            color: #1a73e8;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #222;
+            color: #aaa;
+            padding: 36px 20px 24px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+        .footer-col p,
+        .footer-col a {
+            font-size: 0.82rem;
+            line-height: 2;
+            color: #aaa;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: #1a73e8;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 24px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 0.78rem;
+            color: #666;
+        }
+
+        /* ===== 搜索结果 ===== */
+        .search-results {
+            display: none;
+        }
+        .search-results.active {
+            display: block;
+        }
+        .no-result {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .book-grid,
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cat-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .search-box {
+                flex-direction: column;
+                border-radius: 12px;
+                background: transparent;
+                box-shadow: none;
+                gap: 10px;
+            }
+            .search-box input {
+                border-radius: 50px;
+                padding: 12px 20px;
+            }
+            .search-box button {
+                border-radius: 50px;
+                padding: 12px;
+            }
+            .nav {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                padding: 16px 20px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                gap: 14px;
+            }
+            .book-grid,
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+            .cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .book-grid,
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 40px 16px 36px;
+            }
+            .section {
+                padding: 32px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="header">
+    <div class="header-inner">
+        <a href="javascript:void(0)" class="logo" aria-label="全国图书馆参考咨询联盟首页">
+            <span class="logo-icon">&#9733;</span>
+            <span>参考咨询联盟</span>
+        </a>
+        <button class="menu-toggle" aria-label="菜单" onclick="document.getElementById('nav').classList.toggle('open')">&#9776;</button>
+        <nav class="nav" id="nav">
+            <a href="javascript:void(0)">首页</a>
+            <a href="javascript:void(0)">电子书库</a>
+            <a href="javascript:void(0)">热门推荐</a>
+            <a href="javascript:void(0)">关于我们</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== Main ===== -->
+<main>
+
+    <!-- Hero 搜索区 -->
+    <section class="hero">
+        <h1>全国图书馆<span>参考咨询联盟</span> &#8212; 免费电子书搜索下载</h1>
+        <p>海量电子书资源，支持 PDF、EPUB、MOBI 等多种格式，无需注册即可免费下载。与全国图书馆参考咨询联盟携手为您提供最便捷的电子书检索服务。</p>
+        <div class="search-box" id="searchBox">
+            <input type="text" id="searchInput" placeholder="输入书名、作者或关键词搜索..." aria-label="搜索电子书">
+            <button id="searchBtn">&#128269; 搜索电子书</button>
+        </div>
+        <div class="search-tags">
+            热门搜索：
+            <span onclick="quickSearch('三体')">三体</span>
+            <span onclick="quickSearch('红楼梦')">红楼梦</span>
+            <span onclick="quickSearch('Python编程')">Python编程</span>
+            <span onclick="quickSearch('人类简史')">人类简史</span>
+            <span onclick="quickSearch('活着')">活着</span>
+        </div>
+    </section>
+
+    <!-- 特色说明 -->
+    <section class="section">
+        <h2 class="section-title">为什么选择我们</h2>
+        <p class="section-subtitle">全国图书馆参考咨询联盟致力于为读者提供优质的电子书服务</p>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon blue">&#128218;</div>
+                <h3>海量资源</h3>
+                <p>汇聚百万册电子书资源，覆盖文学、历史、科技、教育等全品类</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon orange">&#127379;</div>
+                <h3>完全免费</h3>
+                <p>所有电子书均可免费下载，无需注册、无需付费、无任何隐藏收费</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon green">&#128196;</div>
+                <h3>多格式支持</h3>
+                <p>支持 PDF、EPUB、MOBI、TXT、AZW3 等主流电子书格式</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon purple">&#128309;</div>
+                <h3>联盟背书</h3>
+                <p>背靠全国图书馆参考咨询联盟体系，资源权威可靠，更新及时</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分类浏览 -->
+    <section class="categories section" style="max-width:100%;">
+        <div class="section" style="padding-top:0;padding-bottom:0;">
+            <h2 class="section-title">分类浏览</h2>
+            <p class="section-subtitle">按分类快速找到你想要的电子书</p>
+            <div class="cat-grid">
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('文学')"><span class="cat-icon">&#128214;</span>文学小说</a>
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('历史')"><span class="cat-icon">&#127758;</span>历史人文</a>
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('科技')"><span class="cat-icon">&#128187;</span>科技编程</a>
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('教育')"><span class="cat-icon">&#127891;</span>教育教学</a>
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('经管')"><span class="cat-icon">&#128176;</span>经管励志</a>
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('生活')"><span class="cat-icon">&#127968;</span>生活百科</a>
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('哲学')"><span class="cat-icon">&#128161;</span>哲学心理</a>
+                <a href="javascript:void(0)" class="cat-item" onclick="quickSearch('外文')"><span class="cat-icon">&#127760;</span>外文原版</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门推荐 -->
+    <section class="section" id="hotBooks">
+        <h2 class="section-title">热门推荐</h2>
+        <p class="section-subtitle">精选优质电子书，免费下载</p>
+        <div class="book-grid" id="bookGrid">
+            <!-- JS 动态渲染 -->
+        </div>
+        <div class="search-results" id="searchResults">
+            <h3 class="section-title" style="margin-top:24px;">搜索结果</h3>
+            <div class="book-grid" id="resultGrid"></div>
+            <div class="no-result" id="noResult" style="display:none;">未找到相关电子书，请尝试其他关键词</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>全国图书馆参考咨询联盟，让阅读更自由</h2>
+        <p>海量电子书，一键搜索，即刻下载，开启你的免费阅读之旅</p>
+        <a href="javascript:void(0)" class="btn-cta" onclick="document.getElementById('searchInput').focus()">&#128269; 立即搜索电子书</a>
+    </section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <h4>&#9733; 参考咨询联盟</h4>
+            <p>全国图书馆参考咨询联盟旗下免费电子书搜索与下载平台，致力于为广大读者提供便捷、优质的电子书检索服务。</p>
+        </div>
+        <div class="footer-col">
+            <h4>快速导航</h4>
+            <a href="javascript:void(0)">首页</a>
+            <a href="javascript:void(0)">电子书库</a>
+            <a href="javascript:void(0)">热门推荐</a>
+            <a href="javascript:void(0)">关于我们</a>
+        </div>
+        <div class="footer-col">
+            <h4>电子书分类</h4>
+            <a href="javascript:void(0)">文学小说</a>
+            <a href="javascript:void(0)">历史人文</a>
+            <a href="javascript:void(0)">科技编程</a>
+            <a href="javascript:void(0)">经管励志</a>
+        </div>
+        <div class="footer-col">
+            <h4>关于我们</h4>
+            <a href="javascript:void(0)">平台介绍</a>
+            <a href="javascript:void(0)">使用帮助</a>
+            <a href="javascript:void(0)">版权声明</a>
+            <a href="javascript:void(0)">联系我们</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 全国图书馆参考咨询联盟. All Rights Reserved.</p>
+        <p>本站仅提供电子书检索服务，所有资源均来自互联网公开渠道，如涉及版权问题请联系我们处理。</p>
+    </div>
+</footer>
+
+<script>
+    // ===== 静态电子书数据 =====
+    var books = [
+        { title: "三体", author: "刘慈欣", cover: "c1", format: "PDF/EPUB", keywords: "科幻 三体 刘慈欣 文学" },
+        { title: "红楼梦", author: "曹雪芹", cover: "c2", format: "EPUB/MOBI", keywords: "红楼梦 古典文学 四大名著 文学 曹雪芹" },
+        { title: "Python编程：从入门到实践", author: "Eric Matthes", cover: "c3", format: "PDF", keywords: "Python编程 从入门到实践 科技 编程 Python" },
+        { title: "人类简史", author: "尤瓦尔·赫拉利", cover: "c4", format: "EPUB/PDF", keywords: "人类简史 历史 尤瓦尔·赫拉利" },
+        { title: "活着", author: "余华", cover: "c5", format: "PDF/EPUB", keywords: "活着 余华 文学 小说" },
+        { title: "经济学原理", author: "曼昆", cover: "c6", format: "PDF", keywords: "经济学原理 曼昆 经管 经济" },
+        { title: "百年孤独", author: "加西亚·马尔克斯", cover: "c7", format: "EPUB/MOBI", keywords: "百年孤独 马尔克斯 文学 小说 外文" },
+        { title: "思考，快与慢", author: "丹尼尔·卡尼曼", cover: "c8", format: "PDF/EPUB", keywords: "思考快与慢 丹尼尔·卡尼曼 哲学 心理" }
+    ];
+
+    // ===== 渲染书籍卡片 =====
+    function renderBooks(bookList, containerId) {
+        var container = document.getElementById(containerId);
+        var html = '';
+        bookList.forEach(function(book) {
+            html += '<article class="book-card">'
+                  + '<div class="book-cover ' + book.cover + '" aria-label="' + book.title + ' 封面">'
+                  + '<span>' + book.title.substring(0, 4) + '</span>'
+                  + '<span class="book-format">' + book.format + '</span>'
+                  + '</div>'
+                  + '<div class="book-info">'
+                  + '<h3>' + book.title + '</h3>'
+                  + '<p class="author">' + book.author + '</p>'
+                  + '<a href="javascript:void(0)" class="btn-download">免费下载</a>'
+                  + '</div>'
+                  + '</article>';
+        });
+        container.innerHTML = html;
+    }
+
+    // ===== 搜索功能 =====
+    function searchBooks(keyword) {
+        var kw = keyword.trim().toLowerCase();
+        if (!kw) {
+            document.getElementById('searchResults').classList.remove('active');
+            renderBooks(books, 'bookGrid');
+            return;
+        }
+        var results = books.filter(function(book) {
+            return book.title.indexOf(kw) !== -1
+                || book.author.indexOf(kw) !== -1
+                || book.keywords.toLowerCase().indexOf(kw) !== -1;
+        });
+        if (results.length > 0) {
+            document.getElementById('searchResults').classList.add('active');
+            document.getElementById('noResult').style.display = 'none';
+            renderBooks(results, 'resultGrid');
+        } else {
+            document.getElementById('searchResults').classList.add('active');
+            document.getElementById('resultGrid').innerHTML = '';
+            document.getElementById('noResult').style.display = 'block';
+        }
+    }
+
+    // ===== 快速搜索 =====
+    function quickSearch(keyword) {
+        document.getElementById('searchInput').value = keyword;
+        searchBooks(keyword);
+        document.getElementById('hotBooks').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== 事件绑定 =====
+    document.getElementById('searchBtn').addEventListener('click', function() {
+        var keyword = document.getElementById('searchInput').value;
+        searchBooks(keyword);
+    });
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            var keyword = document.getElementById('searchInput').value;
+            searchBooks(keyword);
+        }
+    });
+
+    // ===== 初始渲染热门推荐 =====
+    renderBooks(books, 'bookGrid');
+</script>
+
+</body>
+</html>
